@@ -21,5 +21,6 @@
 
 #define CHECK_BTN_ALL(state, combo) (~((state) | ~(combo)) == 0)
 #define CHECK_BTN_ANY(state, combo) (((state) & (combo)) != 0)
+#define CHECK_BTN_NONE(state, combo) (((state) & (combo)) == 0) // dpezdirc
 
 #endif
