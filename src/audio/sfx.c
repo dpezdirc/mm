@@ -127,6 +127,10 @@ void AudioSfx_PlaySfx(u16 sfxId, Vec3f* pos, u8 token, f32* freqScale, f32* volu
     SfxRequest* reqWrite;
     SfxRequest* reqRead;
 
+    // dpezdirc: hard-code sfx
+    // sfxId = NA_SE_VO_OMVO00; // see: sfx.h
+    // reverbAdd = &gSfxDefaultReverb;
+
     if (!gSfxBankMuted[SFX_BANK_SHIFT(sfxId)]) {
         reqWrite = &sSfxRequests[sSfxRequestWriteIndex];
 

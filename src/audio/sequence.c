@@ -434,6 +434,7 @@ void AudioSeq_ProcessSeqCmd(u32 cmd) {
  * Add the sequence cmd to the `sAudioSeqCmds` queue
  */
 void AudioSeq_QueueSeqCmd(u32 cmd) {
+    // return; // dpezdirc: disable BGM
     sAudioSeqCmds[sSeqCmdWritePos++] = cmd;
 }
 
