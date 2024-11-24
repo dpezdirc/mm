@@ -28,6 +28,8 @@ typedef enum {
 } DebugCamTextColor;
 
 void Debug_ClearTextDrawFlags(void);
+void Debug_ShowScreenText(void); // dpezdirc
+void Debug_HideScreenText(void); // dpezdirc
 void Debug_ScreenText(s32 index, s32 colorIndex, const char* text);
 void DebugCamera_ScreenText(u8 x, u8 y, u8 colorIndex, const char* text);
 void Debug_DrawText(struct GraphicsContext* gfxCtx);

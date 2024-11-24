@@ -58,11 +58,21 @@ void Debug_ClearTextDrawFlags(void) {
     sDebugTextDrawFlags = 0;
 }
 
+// dpezdirc
+void Debug_ShowScreenText(void) {
+    sDebugTextDrawFlags |= DEBUG_TEXT_DRAW_TEXT;
+}
+
+// dpezdirc
+void Debug_HideScreenText(void) {
+    sDebugTextDrawFlags &= ~DEBUG_TEXT_DRAW_TEXT;
+}
+
 void Debug_ScreenText(s32 index, s32 colorIndex, const char* text) {
     DebugTextBufferEntry* entry = &sDebugTextBuffer[index];
     char* textDest = entry->text;
 
-    sDebugTextDrawFlags |= DEBUG_TEXT_DRAW_TEXT;
+    // sDebugTextDrawFlags |= DEBUG_TEXT_DRAW_TEXT; // dpezdirc: Debug_SetDrawTextFlag
     entry->colorIndex = colorIndex;
 
     do {
@@ -76,12 +86,12 @@ void Debug_DrawScreenText(GfxPrint* printer) {
     s32 y;
 
     entry = sDebugTextBuffer;
-    for (y = 20; y < 20 + ARRAY_COUNT(sDebugTextBuffer); y++) {
-        GfxPrint_SetPos(printer, 26, y);
+    for (y = 0; y < 0 + ARRAY_COUNT(sDebugTextBuffer); y++) {
+        GfxPrint_SetPos(printer, 1, y);
         color = &sDebugTextColors[entry->colorIndex];
         GfxPrint_SetColor(printer, color->r, color->g, color->b, color->a);
         GfxPrint_Printf(printer, "%s", entry->text);
-        *entry->text = '\0';
+        // *entry->text = '\0'; // dpezdirc: leave text in buffer until it's overwritten
         entry++;
     }
 }
