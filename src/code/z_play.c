@@ -24,6 +24,7 @@ u8 sMotionBlurStatus;
 
 #include "z64bombers_notebook.h"
 #include "z64debug_display.h"
+#include "z64debug_text.h" // dpezdirc
 #include "zelda_arena.h"
 #include "z64quake.h"
 #include "z64rumble.h"
@@ -1508,6 +1509,21 @@ void Play_Main(GameState* thisx) {
         if (CHECK_BTN_ALL(CONTROLLER1(&this->state)->press.button, BTN_L))
         {
             this->interfaceCtx.showHUD = this->interfaceCtx.showHUD > 0 ? 0 : 1;
+        }
+
+        // dpezdirc: toggle visibility of debug text with D-up
+        if (CHECK_BTN_ALL(CONTROLLER1(&this->state)->press.button, BTN_DUP))
+        {
+            static bool displayDebugText = false;
+            displayDebugText = !displayDebugText;
+            if(displayDebugText)
+            {
+                Debug_ShowScreenText();
+            }
+            else
+            {
+                Debug_HideScreenText();
+            }
         }
 
         // dpezdirc: It looks like this hack is just to ensure that the input state isn't accessible in Play_Draw.

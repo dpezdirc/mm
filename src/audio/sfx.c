@@ -1,4 +1,6 @@
 #include "global.h"
+#include "z64debug_text.h" // dpezdirc
+#include "libc64/sprintf.h" // dpezdirc
 
 typedef struct {
     /* 0x00 */ u16 sfxId;
@@ -130,6 +132,13 @@ void AudioSfx_PlaySfx(u16 sfxId, Vec3f* pos, u8 token, f32* freqScale, f32* volu
     // dpezdirc: hard-code sfx
     // sfxId = NA_SE_VO_OMVO00; // see: sfx.h
     // reverbAdd = &gSfxDefaultReverb;
+
+    // dpezdirc: generate SFX ID string and write it to the debug screen text buffer.
+    // visibility is handled in Play_Main
+    static char sSfxIdStr[4];
+    sprintf(sSfxIdStr, "%X", sfxId);
+    Debug_ScreenText(1, 7, sSfxIdStr);
+    // Debug_SetDrawTextFlag(); // comment out to always display SFX ID
 
     if (!gSfxBankMuted[SFX_BANK_SHIFT(sfxId)]) {
         reqWrite = &sSfxRequests[sSfxRequestWriteIndex];
