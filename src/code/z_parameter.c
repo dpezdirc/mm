@@ -6343,8 +6343,6 @@ TexturePtr sStoryTLUTs[] = {
     gStoryGiantsLeavingTLUT,
 };
 
-Input sInterfaceDrawInput[MAXCONTROLLERS]; // dpezdirc
-
 void Interface_Draw(PlayState* play) {
     s32 pad;
     InterfaceContext* interfaceCtx = &play->interfaceCtx;
@@ -6359,13 +6357,9 @@ void Interface_Draw(PlayState* play) {
     s16 counterDigits[4];
     s16 magicAlpha;
 
-    // dpezdirc
-    // hide UI unless:
-    // - paused, or
-    // - L trigger or DUP is pressed
-    PadMgr_GetInput(sInterfaceDrawInput, false);
+    // dpezdirc: hides UI
     if (play->pauseCtx.state == PAUSE_STATE_OFF
-        && CHECK_BTN_NONE(sInterfaceDrawInput->cur.button, BTN_L | BTN_DUP))
+        && interfaceCtx->showHUD == 0)
     {
         return;
     }

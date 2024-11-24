@@ -225,7 +225,8 @@ typedef struct {
     /* 0x278 */ s16 unk_278; // Set in Map_Init, never read
     /* 0x27A */ s16 dungeonSceneIndex;
     /* 0x27C */ s16 mapRoomNum;
-    /* 0x27E */ u8 fishingHUDControl; // Left over from OoT
+    // /* 0x27E */ u8 fishingHUDControl; // Left over from OoT
+    /* 0x27E */ u8 showHUD; // dpezdirc: hijacking this member as it was previously unused
     /* 0x27F */ UNK_TYPE1 unk_27F;
     /* 0x280 */ u8 minigameState;
     /* 0x282 */ s16 minigameCountdownAlpha;

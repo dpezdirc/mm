@@ -1504,6 +1504,14 @@ void Play_Main(GameState* thisx) {
     {
         Input input = *CONTROLLER1(&this->state);
 
+        // dpezdirc: toggle visibility of HUD with left trigger
+        if (CHECK_BTN_ALL(CONTROLLER1(&this->state)->press.button, BTN_L))
+        {
+            this->interfaceCtx.showHUD = this->interfaceCtx.showHUD > 0 ? 0 : 1;
+        }
+
+        // dpezdirc: It looks like this hack is just to ensure that the input state isn't accessible in Play_Draw.
+        // I checked and there shouldn't be and side-effects if it's removed.
         if (1) {
             *CONTROLLER1(&this->state) = D_801F6C18;
         }
