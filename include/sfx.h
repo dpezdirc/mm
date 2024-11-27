@@ -237,6 +237,8 @@ extern u8 gChannelsPerBank[4][7];
 extern u8 gUsedChannelsPerBank[4][7];
 extern f32 gSfxVolume;
 extern SfxParams* gSfxParams[7];
+extern const char** gSfxStrings[7]; // dpezdirc
+extern OSTime* gSfxTimes[7]; // dpezdirc
 extern SfxBankEntry* gSfxBanks[7];
 extern u8 gSfxChannelLayout;
 extern Vec3f gSfxDefaultPos;
